@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panelNumpad = new System.Windows.Forms.Panel();
-            this.NewGame = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -39,6 +38,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.NewGame = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panelNumpad.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,16 +61,6 @@
             this.panelNumpad.Name = "panelNumpad";
             this.panelNumpad.Size = new System.Drawing.Size(267, 209);
             this.panelNumpad.TabIndex = 0;
-            // 
-            // NewGame
-            // 
-            this.NewGame.Location = new System.Drawing.Point(12, 227);
-            this.NewGame.Name = "NewGame";
-            this.NewGame.Size = new System.Drawing.Size(75, 23);
-            this.NewGame.TabIndex = 1;
-            this.NewGame.Text = "New Game";
-            this.NewGame.UseVisualStyleBackColor = true;
-            this.NewGame.Click += new System.EventHandler(this.NewGame_Click);
             // 
             // button9
             // 
@@ -140,18 +134,66 @@
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // NewGame
+            // 
+            this.NewGame.Location = new System.Drawing.Point(12, 227);
+            this.NewGame.Name = "NewGame";
+            this.NewGame.Size = new System.Drawing.Size(75, 23);
+            this.NewGame.TabIndex = 1;
+            this.NewGame.Text = "New Game";
+            this.NewGame.UseVisualStyleBackColor = true;
+            this.NewGame.Click += new System.EventHandler(this.NewGame_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(290, 29);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(46, 23);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "     0 ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(353, 29);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(46, 23);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "     0";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(290, 0);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(46, 23);
+            this.textBox3.TabIndex = 4;
+            this.textBox3.Text = "   You";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(353, 0);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(46, 23);
+            this.textBox4.TabIndex = 5;
+            this.textBox4.Text = " Comp";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(431, 262);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.NewGame);
             this.Controls.Add(this.panelNumpad);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelNumpad.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -168,5 +210,9 @@
         private Button button2;
         private Button button1;
         private Button NewGame;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
     }
 }
