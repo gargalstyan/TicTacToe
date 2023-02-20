@@ -14,7 +14,7 @@ namespace TicTacToe
         private void Form1_Load(object sender, EventArgs e)
         {
             RegisterButtonEvents();
-            ticTacToeBoard = CurrentState(availableButtons);
+            ticTacToeBoard = TicTacToeBoard(availableButtons);
         }
         private void RegisterButtonEvents()
         {
@@ -92,7 +92,7 @@ namespace TicTacToe
                 textBox2.Text = countWinForComp.ToString();
             }
         }
-        private Button[,] CurrentState(List<Button> buttons )
+        private Button[,] TicTacToeBoard(List<Button> buttons )
         {   buttons.Reverse();
             Button[,] board = new Button[3, 3];
             int index = 0;
