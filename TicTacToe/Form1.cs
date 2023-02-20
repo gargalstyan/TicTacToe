@@ -2,9 +2,7 @@ namespace TicTacToe
 {
     public partial class Form1 : Form
     {
-
-        string[,] matrix = new string[3, 3];
-        bool ifX = true;
+        List<Button> availableButtons = new List<Button>();
         public Form1()
         {
             InitializeComponent();
@@ -21,27 +19,51 @@ namespace TicTacToe
                 Button btn = item as Button;
                 if (btn == null)
                     continue;
-                btn.Click += PaintXorO;
+                availableButtons.Add(btn);
+                btn.Click += MyClick;
+                btn.Enabled = true;
 
             }
         }
-        private void PaintXorO(object sender, EventArgs e)
+        private void MyClick(object sender, EventArgs e)
         {
             string[,] tictactoeBoard = new string[3, 3];
-            string currentState = "";
             Button button = sender as Button;
-            if (ifX)
-            {
-                button.Text = "X";
-                ifX = false;
-            }
-            else
-            {
-                button.Text = "O";
-                ifX = true;
-            }
+            button.Text = "X";
             button.Enabled = false;
+            availableButtons.Remove(button);
 
+            string[,] ticTacToeBoard = ReturnCurrentState();
+            if (CheckWinByColumn(ticTacToeBoard) || CheckWinByDiagonal(ticTacToeBoard) || CheckWinByRow(ticTacToeBoard))
+            {
+                MessageBox.Show("You win!");
+                panelNumpad.Enabled = false;
+                return;
+            }
+            
+            ComputerMove();
+        }
+        private void ComputerMove()
+        { 
+            if(availableButtons.Count == 0)
+            {
+                return;
+            }
+            Random random = new Random();
+            Button button = availableButtons[random.Next(0, availableButtons.Count - 1)];
+            button.Text = "O";
+            button.Enabled = false;
+            availableButtons.Remove(button);
+            string[,] ticTacToeBoard = ReturnCurrentState();
+            if (CheckWinByColumn(ticTacToeBoard) || CheckWinByDiagonal(ticTacToeBoard) || CheckWinByRow(ticTacToeBoard))
+            {
+                MessageBox.Show("You lose!");
+                panelNumpad.Enabled = false;
+            }
+        }
+        private string[,] ReturnCurrentState()
+        {
+            string currentState = "";
             foreach (Control item in panelNumpad.Controls)
             {
                 Button btn = item as Button;
@@ -56,7 +78,7 @@ namespace TicTacToe
             Array.Reverse(charArray);
             string reverseText = new string(charArray);
             string[,] ticTacToeBoard = new string[3, 3];
-            for (int i = 0,k=0; i < 9 && k<3; i+=3,k++)
+            for (int i = 0, k = 0; i < 9 && k < 3; i += 3, k++)
             {
                 string column = reverseText.Substring(i, 3);
                 for (int j = 0; j < 3; j++)
@@ -64,11 +86,7 @@ namespace TicTacToe
                     ticTacToeBoard[k, j] = column[j].ToString();
                 }
             }
-            if (CheckWinByColumn(ticTacToeBoard) || CheckWinByDiagonal(ticTacToeBoard) || CheckWinByRow(ticTacToeBoard))
-            {
-                MessageBox.Show("You win!");
-                panelNumpad.Enabled = false;
-            }
+            return ticTacToeBoard;
         }
         private bool CheckWinByColumn(string[,] matrix)
         {
@@ -148,6 +166,22 @@ namespace TicTacToe
 
             }
             return winOrNot;
+        }
+
+
+        private void NewGame_Click(object sender, EventArgs e)
+        {
+            availableButtons.Clear();
+            foreach (Control item in panelNumpad.Controls)
+            {
+                Button btn = item as Button;
+                if (btn == null)
+                    continue;
+                btn.Text = string.Empty;
+                availableButtons.Add(btn);
+                btn.Enabled = true;
+            }
+            panelNumpad.Enabled = true;
         }
     }
 }

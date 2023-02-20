@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelNumpad = new System.Windows.Forms.Panel();
+            this.NewGame = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -54,8 +55,18 @@
             this.panelNumpad.Controls.Add(this.button1);
             this.panelNumpad.Location = new System.Drawing.Point(3, 12);
             this.panelNumpad.Name = "panelNumpad";
-            this.panelNumpad.Size = new System.Drawing.Size(267, 219);
+            this.panelNumpad.Size = new System.Drawing.Size(267, 209);
             this.panelNumpad.TabIndex = 0;
+            // 
+            // NewGame
+            // 
+            this.NewGame.Location = new System.Drawing.Point(12, 227);
+            this.NewGame.Name = "NewGame";
+            this.NewGame.Size = new System.Drawing.Size(75, 23);
+            this.NewGame.TabIndex = 1;
+            this.NewGame.Text = "New Game";
+            this.NewGame.UseVisualStyleBackColor = true;
+            this.NewGame.Click += new System.EventHandler(this.NewGame_Click);
             // 
             // button9
             // 
@@ -134,6 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NewGame);
             this.Controls.Add(this.panelNumpad);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -155,5 +167,6 @@
         private Button button3;
         private Button button2;
         private Button button1;
+        private Button NewGame;
     }
 }
